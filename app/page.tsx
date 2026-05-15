@@ -1,3 +1,4 @@
+import CounterDemo from "@/components/CounterDemo";
 import Link from "next/link";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
         <Link href="/catalog">каталог</Link>
         <Link href="/about">о нас</Link>
       </div>
+      <CounterDemo />
     </div>
   );
 }

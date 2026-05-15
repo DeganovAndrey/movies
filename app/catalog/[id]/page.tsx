@@ -1,3 +1,4 @@
+import FavoriteButton from "@/components/FavoriteButton";
 import Link from "next/link";
 
 interface Props {
@@ -10,6 +11,7 @@ export default async function MoviePage({ params }: Props) {
     <div>
       <div>
         <h1>#{id} Фильм</h1>
+        <FavoriteButton />
         <br />
       </div>
       <Link href="/catalog"> to catalog</Link>
