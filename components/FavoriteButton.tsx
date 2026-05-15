@@ -8,7 +8,7 @@ export default function FavoriteButton() {
     <div>
       <button
         onClick={() => setIsFavorite((prev) => !prev)}
-        className="border rounded-lg p-1 shadow-md hover:shadow-md transition-shadow flex-col justify-between cursor-pointer  hover:border-blue-500 hover:bg-slate-10"
+        className="mt-3 mb-3 border rounded-lg p-1 shadow-md hover:shadow-md transition-shadow flex-col justify-between cursor-pointer  hover:border-blue-500 hover:bg-slate-10"
       >
         {isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
       </button>

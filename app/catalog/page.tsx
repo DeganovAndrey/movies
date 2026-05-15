@@ -42,7 +42,6 @@ export default async function CatalogPage() {
                 {movie.title}
               </h2>
               <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                {" "}
                 {movie.body}
               </p>
             </div>
