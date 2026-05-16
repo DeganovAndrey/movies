@@ -1,3 +1,4 @@
+import SearchBar from "@/components/SearchBar";
 import Link from "next/link";
 
 // type TMovies = {
@@ -14,7 +15,7 @@ import Link from "next/link";
 //   { id: "5", title: "Pulp Fiction", year: 1994 },
 // ];
 
-type Movies = {
+export type Movies = {
   userId: number;
   id: number;
   title: string;
@@ -31,6 +32,7 @@ export default async function CatalogPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-6">PAGE catalog movies</h1>
+      <SearchBar movies={movies} />
       <ul className="grid grid-cols-1 md:grid-col-2 gap-4 mb-6 list-none">
         {movies.map((movie) => (
           <li

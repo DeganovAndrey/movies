@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-interface Movie {
+export interface Movie {
   id: number;
   title: string;
   year: number;
