@@ -1,37 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+1. Создана основная структура проекта и навигация по нему посредством создания папок catalog и about. Навигация реализована через встроенный механизм - Link, и href с точным указанием пути. Также добавлена возможность динамического просмотра каждого фильма через квадратные скобки и выдергивание объекта id через params. 
 
-## Getting Started
+2. Реализованы layout для проекта в целом, и конкретно для catalog. То есть общий layout доступен во всем приложении, а layout в catalog только внутри catalog и его дочерних компонентов. layout в catalog реализован сбоку через семантический тег aside, основной блок данных размещен в main. Также добавлен Navbar со всеми основными путями приложения - главная, каталог, о проекте. Navbar работает корректно, без фризов и ререндера.
 
-First, run the development server:
+3. Через встроенный fetch с расширенными возможностями, которые предоставляет Next, получил массив данных и промапил их в ui. Все реализовано через async Server Components без использования useState и useEffect.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+4. Посредством клиентского компонента реализована возможность добавлять фильм в избранное через useState и toggle. Также разработал клиентский компонент CounterDemo, в котором появляется возможность сложения, вычитания и сброса счетчика.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. На детальной странице фильма реализовано параллельное получение данных через два запроса с помощью метода промисов - Promise.all(). В результате получили один массив фильмов, и один массив похожих фильмов. Данные фильмов выводим, похожие - мапим как список. Также добавлен компонент Loading, который автоматически подхватывается Next и скелетон включается в моменты долгой загрузки.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+6. Реализована возможность получения массива данных через функцию GET, и добавление фильма через функцию POST посредством API Routes. Добавлена возможность поддержки фильтрации по жанру. Также доабавлены выводы ошибок с определенными статусами: 400 - ошибка на клиенте и сообщение об ошибке, 201 - успех, и добавленный объект.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+7. Добавлены статические и динамические метаданые на layout. Установлены заголовки и описание. Имеется описание по дефолту, и template, которые распространяется на дочерние компоненты. Динамические метаданые реализованы с помощью generateMetadata. Next автоматически подхватывает данную функцию, достает id через params, затем фетчит запрос с добавлением полученной id, и получает название и описание фильма, которые подхватывается Next и подставляются в метаданные.
 
-## Learn More
+8. Реализована возможность поиска по каталогу посредством дополнительного создания компонента SearchBar - который работает через клиентский компонент, и затем мы вставили его в страницу каталога, и таким образом реализован мгновенный поиск, и демонстрация количества найденных совпадений.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# movies
+9. Добавлен компонент CatalogError, который отображает текст ошибки и дает возможность перезапуска. Также добавлен файл .env.local с переменной API_BASE_URL, который содержит базовый url. Изменены ссылки на использование базового урла.
