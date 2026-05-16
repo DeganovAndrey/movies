@@ -1,6 +1,7 @@
 import FavoriteButton from "@/components/FavoriteButton";
 import { Metadata } from "next";
 import Link from "next/link";
+
 interface Props {
   params: Promise<{ id: string }>;
 }
@@ -8,7 +9,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
 
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+  const res = await fetch(`${process.env.API_BASE_URL}/posts/${id}`, {
     cache: "no-store",
   });
 
@@ -24,8 +25,8 @@ export default async function MoviePage({ params }: Props) {
   const { id } = await params; // В Next.js 15 params это Promise
 
   const [moviesData, similarMovies] = await Promise.all([
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`),
-    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=4`),
+    fetch(`${process.env.API_BASE_URL}/posts/${id}`),
+    fetch(`${process.env.API_BASE_URL}/posts?_limit=4`),
   ]).then(([r1, r2]) => Promise.all([r1.json(), r2.json()]));
 
   return (

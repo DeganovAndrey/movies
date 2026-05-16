@@ -23,9 +23,7 @@ export type Movies = {
 };
 
 export default async function CatalogPage() {
-  const res = await fetch(
-    "https://jsonplaceholder.typicode.com/posts?_limit=10",
-  );
+  const res = await fetch(`${process.env.API_BASE_URL}/posts?_limit=10`);
 
   const movies: Movies[] = await res.json();
 
