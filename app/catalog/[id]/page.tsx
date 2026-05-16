@@ -1,9 +1,25 @@
 import FavoriteButton from "@/components/FavoriteButton";
+import { Metadata } from "next";
 import Link from "next/link";
-
 interface Props {
   params: Promise<{ id: string }>;
 }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    cache: "no-store",
+  });
+
+  const movie = await res.json();
+
+  return {
+    title: movie.title,
+    description: movie.body.slice(0, 120),
+  };
+}
+
 export default async function MoviePage({ params }: Props) {
   const { id } = await params; // В Next.js 15 params это Promise
 

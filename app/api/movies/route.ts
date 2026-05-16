@@ -28,7 +28,7 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   if (!body.title || !body.year) {
     return NextResponse.json(
-      { error: "Поля title и year не найдены" },
+      { error: "Поля title и year обязательны" },
       { status: 400 },
     );
   }

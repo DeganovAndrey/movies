@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: { default: "Каталог", template: "%s | Каталог фильмов" },
+  description: "Смотрите различные фильмы у нас на платформе",
+};
 
 type Props = {
   children: React.ReactNode;
